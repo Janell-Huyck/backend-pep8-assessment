@@ -28,7 +28,8 @@ food = [10, 20]
 # Prints the food
 win.addch(food[0], food[1], '*')
 
-while key != 27:                       # While Esc key is not pressed
+# While Esc key is not pressed
+while key != 27:
     win.border(0)
     # Printing 'Score' and
     win.addstr(0, 2, 'Score : ' + str(score) + ' ')
@@ -43,16 +44,16 @@ while key != 27:                       # While Esc key is not pressed
     key = key if event == -1 else event
 
     # If SPACE BAR is pressed, wait for another
+    # one (Pause/Resume)
     if key == ord(' '):
-        # one (Pause/Resume)
         key = -1
         while key != ord(' '):
             key = win.getch()
         key = prevKey
         continue
 
+    # If an invalid key is pressed
     if key not in [KEY_LEFT, KEY_RIGHT, KEY_UP, KEY_DOWN, 27]:
-        # If an invalid key is pressed
         key = prevKey
 
     # Calculates the new coordinates of the head of the snake.
@@ -82,7 +83,8 @@ while key != 27:                       # While Esc key is not pressed
     if snake[0] in snake[1:]:
         break
 
-    if snake[0] == food:                         # When snake eats the food
+    # When snake eats the food
+    if snake[0] == food:
         food = []
         score += 1
         while food == []:
